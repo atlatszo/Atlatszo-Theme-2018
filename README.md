@@ -1,2 +1,3 @@
-# Atlatszo-Theme-2018
-atlatszo.hu 2018-as sablon
+# Átlátszó sablon 2018
+
+Az atlatszo.hu Wordpress sablonja.

@@ -1,0 +1,8 @@
+i.mce-ico.mce-i-featuredbox, i.mce-ico.mce-i-adsense, i.mce-ico.mce-i-related, i.mce-ico.mce-i-aboutblock, i.mce-ico.mce-i-quotebox, i.mce-ico.mce-i-tamogatoibox {font: 400 20px/1 dashicons;}
+
+i.mce-ico.mce-i-adsense:before {content: "\f462";}
+i.mce-ico.mce-i-related:before {content: "\f314";}
+i.mce-ico.mce-i-featuredbox:before {content: "\f115";}
+i.mce-ico.mce-i-aboutblock:before {content: "\f484";}
+i.mce-ico.mce-i-quotebox:before {content: "\f110";}
+i.mce-ico.mce-i-tamogatoibox:before {content: "\f487";}
