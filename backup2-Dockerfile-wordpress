@@ -1,0 +1,21 @@
+FROM wordpress:latest
+
+# installs memcached and enables it in apache
+RUN apt-get update && apt-get install -y libmemcached-dev zlib1g-dev \
+    && pecl install memcached-3.0.3 \
+    && docker-php-ext-enable memcached
+
+RUN rm -rf /usr/src/wordpress/wp-content/plugins/ \
+    && rm -rf /usr/src/wordpress/wp-content/themes/ \
+    && rm -rf /usr/src/wordpress/wp-content/uploads
+
+COPY atlatszo/wp-content/plugins /usr/src/wordpress/wp-content/plugins
+COPY atlatszo/wp-content/themes /usr/src/wordpress/wp-content/themes
+COPY atlatszo/wp-content/uploads /usr/src/wordpress/wp-content/uploads
+
+RUN chown -R www-data:www-data /usr/src/wordpress
+
+# COPY docker-entrypoint.sh /usr/local/bin/
+
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
