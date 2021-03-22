@@ -1,10 +1,10 @@
 /*
-Theme Name: Atlatszo 2018
+Theme Name: Atlatszo 2021
 Theme URI: https://atlatszo.hu/
-Description: Atlatszo Wordpress theme &copy; 2018
-Version: 2.0
-Author: Attila Bacso & AGL Group
-Author URI: https://exibio.hu
+Description: Atlatszo Wordpress theme &copy; 2021
+Version: 3.0
+Author: Attila Bacso, AGL Group & Gergely Darabont
+Author URI: https://bacsoattila.hu
 */
 
 @charset "utf-8";
@@ -615,7 +615,7 @@ div#onesignal-popover-container #onesignal-popover-dialog .primary.popover-butto
 
 
 
-/* KIEMELĂS LINK ELEJE */
+/* KIEMELÉS LINK ELEJE */
 
 	span.highlight-section a {
 	color:#ff2932;
@@ -631,13 +631,7 @@ div#onesignal-popover-container #onesignal-popover-dialog .primary.popover-butto
 	text-decoration: underline;
 	}
 
- /* KIEMELĂS LINK VĂGE */
-
-
-
-
-
-
+ /* KIEMELÉS LINK VÉGE */
 
 
 @media screen and (max-width: 768px) {
