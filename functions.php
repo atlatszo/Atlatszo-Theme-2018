@@ -24,6 +24,10 @@ if (function_exists( 'register_nav_menu')) {
 	register_nav_menu( 'footermenu', 'Menu in the footer.' );
 }
 
+// Disable trackbacks / pingbacks / comments for every post, including old ones
+add_filter( 'pings_open', '__return_false', 10, 2 );
+add_filter( 'comments_open', '__return_false', 10, 2 );
+
 // Custom posts
 
 include_once('cpp.php');
@@ -716,4 +720,16 @@ function after_save_menu($menu_id, $menu_data) {
   </script>
 <?php
 }
+
+/* function sb_change_for_cdn() {
 ?>
+<script>
+    if (typeof window.sb_instagram_js_options !== 'undefined') {
+        window.sb_instagram_js_options.resized_url = 'https://cdn.atlatszo.hu/wp-content/uploads/sb-instagram-feed-images/';
+    }
+</script>
+<?php
+}
+add_action( 'wp_footer', 'sb_change_for_cdn', 99 );
+?>*/
+

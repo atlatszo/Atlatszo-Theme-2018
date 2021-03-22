@@ -179,7 +179,9 @@
 
 					<?php
 					$facebook_hozzaszolasok=get_field('facebook_hozzaszolasok');
-					if ($facebook_hozzaszolasok && $facebook_hozzaszolasok=="igen") {
+					// original if statement was the one commented below, but they asked to disable fb comments. uncomment to restore original state
+					// if ($facebook_hozzaszolasok && $facebook_hozzaszolasok=="igen") {
+					if (false) {
 						// https://www.facebook.com/atlatszo.hu/posts/1796099610459547
 					?>
 					<div class="facebook_comments_trigger">
@@ -222,6 +224,12 @@
 						<div class="pt40"></div>
 
 					<?php } ?>
+
+                                        <?php /* if ( is_active_sidebar( 'korona-widget-mobile' ) ) : */ ?>
+                                          <?php /* dynamic_sidebar( 'korona-widget-mobile' ); */ ?>
+                                        <?php /* endif; */ ?>
+
+                                        <div id="korona-widget-mobile" class="n100 pt40"><iframe src="https://cdn.atlatszo.hu/korona-portrait.html?a=<?php echo date('d'); ?>" style="width: 100%; height: 604px; border: 0;"></iframe></div>
 
 				</section>
 

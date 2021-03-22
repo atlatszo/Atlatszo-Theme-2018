@@ -6,6 +6,13 @@ get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post();?>
 
 <main class="main home">
+	<?php if ( is_active_sidebar( 'main-banner-desktop' ) ) : ?>
+		<?php dynamic_sidebar( 'main-banner-desktop' ); ?>
+	<?php endif; ?>
+
+        <?php if ( is_active_sidebar( 'main-banner-mobile' ) ) : ?>
+                <?php dynamic_sidebar( 'main-banner-mobile' ); ?>
+        <?php endif; ?>
 
 	<?php
 	$top_sztori_tipusa=get_field('top_sztori_tipusa');
@@ -20,6 +27,10 @@ get_header(); ?>
 	<?php } ?>
 
 	<section class="n9 section-cikkek-4"><?php include_once('masodik_4_cikk.php') ?></section>
+
+        <?php /* if ( is_active_sidebar( 'korona-widget-mobile' ) ) : */ ?>
+                <?php /* dynamic_sidebar( 'korona-widget-mobile' ); */ ?>
+        <?php /* endif; */ ?>
 
 	<?php
 

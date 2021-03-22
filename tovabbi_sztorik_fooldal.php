@@ -22,7 +22,7 @@ $args_tovabbi_sztorik=array(
 $the_query_tovabbi_sztorik = new WP_Query($args_tovabbi_sztorik);
 //var_dump($the_query_tovabbi_sztorik);
 ?>
-<section class="n100 section-tovabbi-sztorik section-tovabbi-sztorik-1">
+<section class="teszt2class n100 section-tovabbi-sztorik section-tovabbi-sztorik-1">
 
 	<div class="tovabbi_sztorik cle">
 

@@ -15,7 +15,7 @@ if ($top_sztori_alatti_tipus=="blogajánló") {
 
 		<div class="shell shell-2">
 			<div class="n9">
-				<?php trans_list('https://dummy.atlatszo.hu/multifeed', $blogposts_no); ?>
+				<?php trans_list_with_ro('https://dummy.atlatszo.hu/multifeed', $blogposts_no); ?>
 			</div>
 		</div>
 	</div>

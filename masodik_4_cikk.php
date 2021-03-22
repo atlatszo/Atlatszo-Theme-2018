@@ -11,16 +11,38 @@ if ($top_sztori_alatti_tipus=="blogajánló") { ?>
 
   $context = stream_context_create($opts);
   $source = file_get_contents('https://dummy.atlatszo.hu/multifeed', false, $context);
-	  if ($source=="") return false;
+  $source_ro = file_get_contents('https://atlatszo.ro/feed/', false, $context);
+          if ($source=="" || $source_ro=="") return false;
 	  else {
 	    $DOM = new DOMDocument;
 	    $DOM->loadXML($source);
 	    $nodes = $DOM->getElementsByTagName("item");
 	    $i=0;
 
+            $DOM_ro = new DOMDocument;
+            $DOM_ro->loadXML($source_ro);
+            $nodes_ro = $DOM_ro->getElementsByTagName("item");
+            $i_ro=0;
+
 	    foreach($nodes as $node){
 	      
 	      if($i==$num) {break;}
+
+              if( atl_format_date($node->getElementsByTagName('pubDate')->item(0)->nodeValue) <= atl_format_date($nodes_ro[$i_ro]->getElementsByTagName('pubDate')->item(0)->nodeValue) ) {
+       		 ?><article class="n25 ib vt mb40">
+       		 <div class="inner pr50">
+
+       		   <a href="https://atlatszo.ro" class="the_category mb30 bl kek">Átlátszó Erdély</a>
+       		   <h3 class="the_title ttn"><a href="<?php echo $nodes_ro[$i_ro]->getElementsByTagName('link')->item(0)->nodeValue; ?>" class="kszoveg cdarkgrey lh200"><?php echo $nodes_ro[$i_ro]->getElementsByTagName('title')->item(0)->nodeValue; ?></a></h3>
+
+       		 </div>
+       		 </article><?php
+       		 $i++;
+       		 $i_ro++;
+              }
+
+              if($i==$num) {break;}
+
 	      $url=get_feed_url($node);
 	      $blog_name=str_replace('.', '-', $url);
 	      if ($blog_name!="blog-atlatszo-hu") {$blog_class="kek";} else {$blog_class="";}

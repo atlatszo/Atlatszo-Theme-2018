@@ -121,6 +121,42 @@ function roots_widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));
+
+   register_sidebar(array(
+    'name'          => __('Main banner desktop', 'roots'),
+    'id'            => 'main-banner-desktop',
+    'before_widget' => '<div id="main-banner-desktop">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+   register_sidebar(array(
+    'name'          => __('Main banner mobile', 'roots'),
+    'id'            => 'main-banner-mobile',
+    'before_widget' => '<div id="main-banner-mobile">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Korona widget desktop', 'roots'),
+    'id'            => 'korona-widget-desktop',
+    'before_widget' => '<div id="korona-widget-desktop" class="cgrey fs12px mb20 pb20 bbsgrey3">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Korona widget mobile', 'roots'),
+    'id'            => 'korona-widget-mobile',
+    'before_widget' => '<div id="korona-widget-mobile" class="n100 pt40">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
   
   
   // Widgets

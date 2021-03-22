@@ -615,6 +615,23 @@ div#onesignal-popover-container #onesignal-popover-dialog .primary.popover-butto
 
 
 
+/* KIEMELĂS LINK ELEJE */
+
+	span.highlight-section a {
+	color:#ff2932;
+	text-decoration: underline;
+	}
+	
+	span.highlight-section a:hover {
+	color:#690408 ;
+	}
+	
+	span.highlight-section a:active {
+	color:#690408 ;
+	text-decoration: underline;
+	}
+
+ /* KIEMELĂS LINK VĂGE */
 
 
 
@@ -623,10 +640,18 @@ div#onesignal-popover-container #onesignal-popover-dialog .primary.popover-butto
 
 
 
+@media screen and (max-width: 768px) {
+#main-banner-desktop { display: none; }
+}
 
+@media screen and (min-width: 769px) {
+#main-banner-mobile { display: none; }
+}
 
+@media screen and (max-width: 768px) {
+#korona-widget-desktop { display: none; }
+}
 
-
-
-
-
+@media screen and (min-width: 769px) {
+#korona-widget-mobile { display: none; }
+}

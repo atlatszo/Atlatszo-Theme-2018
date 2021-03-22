@@ -338,7 +338,7 @@
 	main.support .tamogatoi.in_content a.btn {padding:20px 30px;margin-bottom:30px;margin-top: 20px;}
 	main.support ul.tamogatoi_opciok li {width:100%;margin-bottom:30px;}
 	main.support ul.tamogatoi_opciok li.cl {display:none;}
-	main.support ul.tamogatoi_opciok li .kszoveg {display:none;}
+	main.support ul.tamogatoi_opciok li .kszoveg { /* display:none; */ }
 	main.support ul.tamogatoi_opciok li h4 {margin:0;}
 	.tamogatoi.lista .input_email {margin-top:20px;}
 	main.support .the_content .n75 {width:100%;padding:0 10px;}

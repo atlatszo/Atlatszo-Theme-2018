@@ -137,7 +137,7 @@ function bag_tracker($num){
   return $result;
   }
 
-}
+} 
 
 
 function stripInvalidXml($value)
@@ -350,8 +350,8 @@ class tracker_widget extends WP_Widget {
 					echo $title;
 				echo $after_title;
 			}
-			echo '<p>Legutóbb megváltozott üvegzsebek:</p>';			
-			echo bag_tracker($num);
+			//echo '<p>Legutóbb megváltozott üvegzsebek:</p>';			
+			//echo bag_tracker($num);
 				
 	
 		echo $after_widget; 
@@ -424,7 +424,11 @@ function get_feed_origin($url){
     'videkicsajok.atlatszo.hu' => 'Vidéki csajok',
     'kozerdekvedelem.atlatszo.hu' => 'Közérdekvédelem',
     'orszagszerte.atlatszo.hu' => 'Országszerte',
-    'crisiszones.atlatszo.hu' => 'CrisisZones'
+    'crisiszones.atlatszo.hu' => 'CrisisZones',
+    'ejeb.atlatszo.hu' => 'Strasbourgi Figyelő',
+    'megoldas.atlatszo.hu' => 'Megoldás',
+    'koszegferenc.atlatszo.hu' => 'Kőszeg Ferenc',
+    'regiblogok.atlatszo.hu' => 'Régi blogok'
   );
   if($val = $names[$url]);
   else $val = $url;
@@ -475,6 +479,63 @@ function trans_list($RSS_Url,$num) {
 }
 }
 
+
+/* New trans_list function to include atlatszo.ro posts in feed */
+function trans_list_with_ro($RSS_Url,$num) {
+  $opts = http_opts();
+
+  $context = stream_context_create($opts);
+  $source = file_get_contents($RSS_Url, false, $context);
+  $source_ro = file_get_contents('https://atlatszo.ro/feed/', false, $context);
+  if ($source=="" || $source_ro=="") return false;
+  else {
+    $DOM = new DOMDocument;
+    $DOM->loadXML($source);
+    //$nodes = array_slice($DOM->getElementsByTagName("item"), 0, $num-1);
+    $nodes = $DOM->getElementsByTagName("item");
+    //echo '<ul>';
+    $i=0;
+
+    $DOM_ro = new DOMDocument;
+    $DOM_ro->loadXML($source_ro);
+    $nodes_ro = $DOM_ro->getElementsByTagName("item");
+    $i_ro=0;
+    foreach($nodes as $node){
+      
+      if($i==$num) {break;}
+
+      if( atl_format_date($node->getElementsByTagName('pubDate')->item(0)->nodeValue) <= atl_format_date($nodes_ro[$i_ro]->getElementsByTagName('pubDate')->item(0)->nodeValue) ) {
+        ?><article class="n25 ib vt pt50 item-<?php echo $i; ?>">
+        <div class="inner pr50">
+
+          <a href="https://atlatszo.ro" class="the_category fs15px p10 bred cwhite ib mb20 ls1 kek">Átlátszó Erdély</a>
+          <h2 class="the_title ttn fs18px lh180"><a href="<?php echo $nodes_ro[$i_ro]->getElementsByTagName('link')->item(0)->nodeValue; ?>" class="kszoveg cdarkgrey"><?php echo $nodes_ro[$i_ro]->getElementsByTagName('title')->item(0)->nodeValue; ?></a></h2>
+
+        </div>
+        </article><?php
+        $i++;
+        $i_ro++;
+      }
+
+      if($i==$num) {break;}
+
+      $url=get_feed_url($node);
+      $blog_name=str_replace('.', '-', $url);
+      if ($blog_name!="blog-atlatszo-hu") {$blog_class="kek";} else {$blog_class="";}
+      ?><article class="n25 ib vt pt50 item-<?php echo $i; ?>">
+         <div class="inner pr50">
+            
+            <a href="<?php echo "https://".$url; ?>" class="the_category fs15px p10 bred cwhite ib mb20 ls1 <?php echo $blog_class; ?>"><?php echo get_feed_origin($url); ?></a>
+            <h2 class="the_title ttn fs18px lh180"><a href="<?php echo $node->getElementsByTagName('link')->item(0)->nodeValue; ?>" class="kszoveg cdarkgrey"><?php echo $node->getElementsByTagName('title')->item(0)->nodeValue; ?></a></h2>
+
+          </div>
+        </article><?php
+        $i++;
+    }
+    //echo '</ul>';
+}
+}
+/* ------------------------------------------------------------- */
 
 
 
